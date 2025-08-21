@@ -25,41 +25,53 @@
 - 实时轮询采集设备温度、湿度、亮度状态
 - 支持多从站设备通信
 - 可配置串口通信参数(波特率、数据位、停止位、校验位)
+- <img width="1025" height="718" alt="image" src="https://github.com/user-attachments/assets/bd4e82ad-9fda-422e-b634-070d45c0b03a" />
+<img width="1915" height="1080" alt="image" src="https://github.com/user-attachments/assets/f0647705-a86e-4d46-95f4-7dca0a589811" />
+<img width="938" height="562" alt="image" src="https://github.com/user-attachments/assets/ecac431e-182c-429b-8bd9-a46a05d8e032" />
+
+
 
 ### 3. 数据可视化
 - 实时曲线展示温度、湿度变化趋势
 - 设备状态直观显示(正常、高温、低温)
 - 历史最高/最低温度记录显示
+- <img width="1572" height="834" alt="image" src="https://github.com/user-attachments/assets/a7521059-ef6c-4812-9e54-8d719464a86e" />
+
 
 ### 4. 设备控制
 - 通过Modbus写线圈指令控制5盏LED灯状态
 - 支持向设备寄存器写入文本指令(如"请检修")
 - 实时反馈设备控制结果
+- <img width="1018" height="734" alt="image" src="https://github.com/user-attachments/assets/08656f95-8bd1-4001-8239-b48589c8c8f0" />
+
 
 ### 5. 报警管理
 - 可配置温度、湿度阈值
 - 自动触发报警状态并记录
-- 视觉报警提示(颜色变化、闪烁等)
+- 视觉报警提示(颜色变化)
+- <img width="1567" height="818" alt="image" src="https://github.com/user-attachments/assets/bd2cb2ce-32d7-47c9-86b5-541c872885c5" />
+<img width="1575" height="787" alt="image" src="https://github.com/user-attachments/assets/16d8a906-c1b1-4ed3-a093-bb3b681c78ac" />
+
 
 ### 6. 数据存储
 - 使用Entity Framework优化数据库操作
-- 设备数据表设计包含时间戳、设备ID、温度、湿度、亮度、报警状态等字段
+- 设备数据表设计包含设备ID、温度最高最低、湿度最大最小值、亮度最大最小值
 - 支持历史数据查询和导出
+- <img width="690" height="532" alt="image" src="https://github.com/user-attachments/assets/efe06bd4-d76a-4827-80e6-518aeb5038af" />
+
 
 ## 数据库设计
 
 ### 设备数据表结构
 ```sql
-CREATE TABLE DeviceData (
-    Id INT PRIMARY KEY IDENTITY,
-    Timestamp DATETIME NOT NULL,
-    DeviceId INT NOT NULL,
-    Temperature DECIMAL(5,2) NOT NULL,
-    Humidity DECIMAL(5,2) NOT NULL,
-    Brightness INT NOT NULL,
-    AlarmStatus INT NOT NULL,
-    CreatedDate DATETIME DEFAULT GETDATE()
-);
+SELECT TOP (1000) [eid]
+      ,[TemperatureLowM]
+      ,[TemperatureHighM]
+      ,[HumidtyLowM]
+      ,[HumidtyHighM]
+      ,[BrightnessLowM]
+      ,[BrightnessHighM]
+  FROM [equipmentMS].[dbo].[t_equipmentM]
 ```
 
 ## 安装与部署
