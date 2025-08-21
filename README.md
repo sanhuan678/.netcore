@@ -18,6 +18,8 @@
 ### 1. 系统登录
 - 基于数据库的用户名密码验证机制
 - 安全的登录验证流程
+- <img width="464" height="384" alt="image" src="https://github.com/user-attachments/assets/4459cc65-8048-4f86-80aa-25c98ff10a15" />
+
 
 ### 2. 设备数据采集
 - 实时轮询采集设备温度、湿度、亮度状态
