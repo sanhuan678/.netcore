@@ -1,17 +1,17 @@
-# 工业设备监控系统
+# 基于WPF与Prism框架的模块化工业设备监控与数据采集（SCADA）平台
 
-基于Winform和Modbus RTU协议实现的工业设备监控系统，用于实时采集温湿度/灯光数据，提供可视化展示、阈值报警和数据存储功能。
+基于WPF的工业监控系统，实现Modbus RTU设备数据异步轮询采集（温湿度/灯光）、实时曲线展示、阈值警告及SQL Server存储，采用MVVM设计模式+Prism框架+EF优化数据库操作，使用Timer定时器实现实时数据刷新、状态监控。
 
 ## 系统概述
 
-本系统采用三层架构设计，结合Modbus RTU通信协议和SQL Server数据库，实现对工业设备的实时监控和数据管理。系统提供友好的用户界面，支持设备数据采集、状态控制、实时曲线展示和报警功能。
+本系统采用采用MVVM设计模式+Prism框架+EF优化数据库操作，结合Modbus RTU通信协议和SQL Server数据库，实现对工业设备的实时监控和数据管理。系统提供友好的用户界面，支持设备数据采集、状态控制、实时曲线展示和报警功能。
 
 ## 技术栈
 
-- **前端界面**: Winform (C#) + DevExpress/自定义控件
+- **前端界面**: WPF (C#) 
 - **通信协议**: Modbus RTU (使用NModbus库)
 - **数据库**: SQL Server + Entity Framework ORM框架
-- **系统架构**: 三层架构(表现层、业务逻辑层、数据访问层)
+- **系统架构**: MVVM设计模式+Prism框架
 
 ## 功能特性
 
@@ -55,24 +55,16 @@
 
 ### 6. 数据存储
 - 使用Entity Framework优化数据库操作
-- 设备数据表设计包含设备ID、温度最高最低、湿度最大最小值、亮度最大最小值
+- 设备数据表设计包含时间挫、当前温度、当前湿度、当前亮度
 - 支持历史数据查询和导出
-- <img width="690" height="532" alt="image" src="https://github.com/user-attachments/assets/efe06bd4-d76a-4827-80e6-518aeb5038af" />
+- 用户表信息
+-<img width="1879" height="961" alt="image" src="https://github.com/user-attachments/assets/d311d562-3de3-438a-8744-2cd159e0073e" />
+
+<img width="946" height="671" alt="image" src="https://github.com/user-attachments/assets/4929e9dd-10aa-4e93-9de4-bd5db68af34f" />
 
 
-## 数据库设计
-
-### 设备数据表结构
-```sql
-SELECT TOP (1000) [eid]
-      ,[TemperatureLowM]
-      ,[TemperatureHighM]
-      ,[HumidtyLowM]
-      ,[HumidtyHighM]
-      ,[BrightnessLowM]
-      ,[BrightnessHighM]
-  FROM [equipmentMS].[dbo].[t_equipmentM]
-```
+## 应用场景
+- 该软件可以连接至生产线上的PLC或各种传感器，用于监控设备的工作状态，如电机温度、水箱液位、压力值等，WPF界面可以作为一个小型的监控中心（HMI），显示生产线的实时数据（如当前速度、产量、故障状态）。
 
 ## 安装与部署
 
