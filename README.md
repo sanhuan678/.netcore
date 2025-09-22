@@ -63,7 +63,7 @@
 - 用户表信息
 -<img width="1879" height="961" alt="image" src="https://github.com/user-attachments/assets/d311d562-3de3-438a-8744-2cd159e0073e" />
 
-<img width="946" height="671" alt="image" src="https://github.com/user-attachments/assets/4929e9dd-10aa-4e93-9de4-bd5db68af34f" />
+
 
 
 
